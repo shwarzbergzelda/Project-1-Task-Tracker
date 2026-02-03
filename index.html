@@ -10,13 +10,21 @@
     <div class="container">
         <h1>Task Tracker</h1>
         <form id="taskForm">
-            <label for="taskName">Task Name:</label>
-            <input type="text" id="taskName"><br>
-            <label for="taskDescription">Description:</label>
-            <textarea id="taskDescription" name="textDescription"></textarea><br><br>
-            <label for="taskDeadline">Task deadline:</label>
-            <input type="date" id="taskDeadline" name="taskDeadline"><br>
-            <button type="submit">Add Task</button>
+            <div id="taskNameField">
+                <label for="taskName">Task Name:</label>
+                <input type="text" id="taskName"><br>
+            </div>
+            <div id="taskDescriptionField">
+                <label for="taskDescription">Description:</label>
+                <textarea id="taskDescription" name="textDescription"></textarea><br><br>
+            </div>
+            
+            <div id="taskDeadlineField">
+                <label for="taskDeadline">Task deadline:</label>
+                <input type="date" id="taskDeadline" name="taskDeadline">
+                <button type="submit">Add Task</button>
+            </div>
+            
         </form>
         <table id="taskTable">
 
