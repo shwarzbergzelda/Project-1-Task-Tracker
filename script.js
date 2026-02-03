@@ -34,6 +34,7 @@ function handleSubmission(event) {
     });
 
     render();
+    taskForm.reset();
 }
 // Function to render tasks in the table
 function render() {
@@ -54,6 +55,11 @@ function toggleCompletion(taskIndex) {
         tasks[taskIndex].completed = !tasks[taskIndex].completed;
         render();
     }
+}
+
+function removeTask(taskIndex) {
+    tasks.splice(taskIndex, 1);
+    render();
 }
 
 // Function to initialize the table
