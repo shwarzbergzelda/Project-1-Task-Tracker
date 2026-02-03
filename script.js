@@ -31,7 +31,8 @@ function handleSubmission(event) {
         name: taskName,
         description: taskDescription,
         deadline: taskDeadline,
-        completed: false
+        completed: false,
+        showDescription: true
     });
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -46,11 +47,29 @@ function render() {
         <tr class= ${task.completed ? 'taskCompleted' : ''}>
             <td><input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleCompletion(${index})"></td>
             <td>${task.name}</td>
-            <td>${task.description}</td>
             <td>${task.deadline}</td>
             <td><button onclick="removeTask(${index})">Remove</button></td>
         </tr>
+        ${task.description ? `
+            <tr class = ${task.completed ? 'taskCompleted' : ''}>
+                <td></td>
+                <td class="taskDescriptionCell" colspan="2">
+                    <div class="descriptionSlide ${task.showDescription ? 'open' : ''}" onclick="toggleDescription(${index})" role="button" tabindex="0">
+                    ${!task.showDescription ? '<span class="descriptionLabel">Description</span>' : ''}
+                    <div class="descriptionContent">${task.description}</div>
+                    </div>
+                </td>
+            </tr>
+        ` : ''}
+        
     `).join(' ');
+}
+
+function toggleDescription(taskIndex) {
+    if (tasks[taskIndex]) {
+        tasks[taskIndex].showDescription = !tasks[taskIndex].showDescription;
+        render();
+    }
 }
 
 function toggleCompletion(taskIndex) {

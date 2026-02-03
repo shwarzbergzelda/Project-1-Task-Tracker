@@ -31,3 +31,36 @@ form {
     text-decoration: line-through;
 }
 
+.taskDescriptionCell {
+    color: #888;
+    font-size: 0.9em;
+    padding-top: 0;
+    cursor: pointer;
+    max-width: 100px;
+}
+
+.taskDescriptionCell:hover {
+    background-color: rgb(209, 212, 207);
+    color: black;
+}
+
+.descriptionSlide {
+    cursor: pointer;
+    outline: none;
+}
+
+.descriptionContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.descriptionSlide.open .descriptionContent {
+    max-height: 500px;
+}
+
+.descriptionLabel {
+    display: block;
+    color: #666;
+    font-size: 0.9em;
+}
