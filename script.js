@@ -9,7 +9,8 @@ const taskTable = document.getElementById("taskTable");
 
 // script.js
 // Section 2: App State Variables
-let tasks = [];
+const savedTasks = localStorage.getItem("tasks");
+let tasks = savedTasks ? JSON.parse(savedTasks) : []
 
 // Function to handle form submissions
 function handleSubmission(event) {
@@ -32,6 +33,8 @@ function handleSubmission(event) {
         deadline: taskDeadline,
         completed: false
     });
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 
     render();
     taskForm.reset();
@@ -59,13 +62,13 @@ function toggleCompletion(taskIndex) {
 
 function removeTask(taskIndex) {
     tasks.splice(taskIndex, 1);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
     render();
 }
 
 // Function to initialize the table
 function init() {
     taskTable.innerHTML = ''; // Clear the table
-    tasks = []; // Reset the tasks array
     render(); // Call the render function
     taskForm.addEventListener("submit", handleSubmission);
 }

@@ -5,6 +5,10 @@ body {
     background-color: #f4f4f4;
 }
 
+h1 {
+    text-align: center;
+}
+
 .container {
     max-width: 800px;
     margin: 50px auto;
@@ -26,3 +30,4 @@ form {
 .taskCompleted td {
     text-decoration: line-through;
 }
+
