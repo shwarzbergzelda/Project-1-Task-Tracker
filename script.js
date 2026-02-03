@@ -29,24 +29,31 @@ function handleSubmission(event) {
     tasks.push({
         name: taskName,
         description: taskDescription,
-        deadline: taskDeadline
+        deadline: taskDeadline,
+        completed: false
     });
 
     render();
 }
 // Function to render tasks in the table
 function render() {
-    console.log(tasks)
     // TODO: Use array methods to create a new table row of data for each item in the arr
-    taskTable.innerHTML = tasks.map(task => `
-        <tr>
+    taskTable.innerHTML = tasks.map((task, index) => `
+        <tr class= ${task.completed ? 'taskCompleted' : ''}>
+            <td><input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleCompletion(${index})"></td>
             <td>${task.name}</td>
             <td>${task.description}</td>
             <td>${task.deadline}</td>
-            <td><button onclick="markTaskComplete(this)">Complete</button></td>
-            <td><button onclick="removeTask(this)">Remove</button></td>
+            <td><button onclick="removeTask(${index})">Remove</button></td>
         </tr>
     `).join(' ');
+}
+
+function toggleCompletion(taskIndex) {
+    if (tasks[taskIndex]) {
+        tasks[taskIndex].completed = !tasks[taskIndex].completed;
+        render();
+    }
 }
 
 // Function to initialize the table

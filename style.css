@@ -17,3 +17,12 @@ body {
 form {
     margin-bottom: 20px;
 }
+
+.taskCompleted {
+    opacity: 0.5;
+    background-color: #e0e0e0;
+}
+
+.taskCompleted td {
+    text-decoration: line-through;
+}
