@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Task Tracker</title>
 </head>
-<body>
-    <div class="container">
-        <h1>Task Tracker</h1>
-        <form id="taskForm">
-            <div id="taskNameField">
-                <label for="taskName">Task Name:</label>
-                <input type="text" id="taskName"><br>
-            </div>
-            <div id="taskDescriptionField">
-                <label for="taskDescription">Description:</label>
-                <textarea id="taskDescription" name="textDescription"></textarea><br><br>
-            </div>
-            
-            <div id="taskDeadlineField">
-                <label for="taskDeadline">Task deadline:</label>
-                <input type="date" id="taskDeadline" name="taskDeadline">
-                <button type="submit">Add Task</button>
-            </div>
-            
-        </form>
-        <table id="taskTable">
 
-        </table>
+<body>
+
+    <h1>Task Tracker</h1>
+    <button id="addTaskButton" class="addTaskButton">Add To Do Item</button>
+    
+    <div id="taskModal" class="modal">
+        <div class="modalContent">
+            <span class="close">&times;</span>
+            <form id="taskForm">
+                <div id="taskNameField">
+                    <label for="taskName">Task Name:</label>
+                    <input type="text" id="taskName"><br>
+                </div>
+                <div id="taskDescriptionField">
+                    <label for="taskDescription">Description:</label>
+                    <textarea id="taskDescription" name="textDescription"></textarea><br><br>
+                </div>
+
+                <div id="taskDeadlineField">
+                    <label for="taskDeadline">Task deadline:</label>
+                    <input type="date" id="taskDeadline" name="taskDeadline">
+                    <button type="submit">Add Task</button>
+                </div>
+            </form>
+        </div>
     </div>
+
+    <table id="taskTable"></table>
+
     <script src="script.js"></script>
 </body>
+
 </html>

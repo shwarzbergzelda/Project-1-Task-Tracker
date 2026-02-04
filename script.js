@@ -7,6 +7,9 @@ const deleteIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" 
 
 const taskForm = document.getElementById("taskForm");
 const taskTable = document.getElementById("taskTable");
+const taskModal = document.getElementById("taskModal");
+const addTaskButton = document.getElementById("addTaskButton");
+const closeModal = document.querySelector(".close")
 
 // script.js
 // Section 2: App State Variables
@@ -40,6 +43,7 @@ function handleSubmission(event) {
 
     render();
     taskForm.reset();
+    taskModal.style.display = "none";
 }
 // Function to render tasks in the table
 function render() {
@@ -91,6 +95,13 @@ function init() {
     taskTable.innerHTML = ''; // Clear the table
     render(); // Call the render function
     taskForm.addEventListener("submit", handleSubmission);
+    addTaskButton.addEventListener("click", () => {taskModal.style.display = "block"});
+    closeModal.addEventListener("click", () => {taskModal.style.display = "none"});
+    window.addEventListener("click", (e) => {
+        if (e.target == taskModal) {
+            taskModal.style.display = "none";
+        }
+    })
 }
 
 init();
